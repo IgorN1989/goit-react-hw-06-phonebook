@@ -5,7 +5,7 @@ import { FilterContainer, FilterLabel, FilterInput } from './Filter.styled';
 
 export const Filter = () => {
   const dispatch = useDispatch();
-  const onChangeFilter = newFilter => dispatch(setFilter(newFilter));
+  const onChangeFilter = e => dispatch(setFilter(e.target.value));
 
   return (
     <FilterContainer>
@@ -15,7 +15,7 @@ export const Filter = () => {
           type="text"
           name="filter"
           placeholder="Search"
-          onChange={e => onChangeFilter(e.target.value)}
+          onChange={onChangeFilter}
         />
       </FilterLabel>
     </FilterContainer>
