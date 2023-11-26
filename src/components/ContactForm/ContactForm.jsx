@@ -1,7 +1,11 @@
 import { Formik } from 'formik';
 import { object, string, number } from 'yup';
 import { BsPersonPlusFill } from 'react-icons/bs';
+import { useDispatch, useSelector } from 'react-redux';
+import toast from 'react-hot-toast';
 
+import { addContact } from 'redux/actions';
+import { getContacts } from 'redux/selectors';
 import {
   StyledForm,
   Label,
@@ -22,7 +26,24 @@ const initialValues = {
   number: '',
 };
 
-export const ContactForm = ({ onAddContact }) => {
+export const ContactForm = () => {
+  const contacts = useSelector(getContacts);
+  const dispatch = useDispatch();
+
+  const checkNewContact = newContact => {
+    return contacts.some(
+      contact => contact.name.toLowerCase() === newContact.name.toLowerCase()
+    );
+  };
+
+  const onAddContact = newContact => {
+    if (checkNewContact(newContact)) {
+      alert(`${newContact.name} is already in contacts.`);
+      return;
+    }
+    dispatch(addContact(newContact));
+    toast.success(`Contact ${newContact.name} was added!`);
+  };
   return (
     <Formik
       initialValues={initialValues}
