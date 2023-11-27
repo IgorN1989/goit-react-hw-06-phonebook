@@ -2,7 +2,8 @@ import { useDispatch } from 'react-redux';
 import toast from 'react-hot-toast';
 import { BsPersonFillX } from 'react-icons/bs';
 
-import { deleteContact } from 'redux/actions';
+import { deleteContact } from 'redux/contactsSlice';
+
 import { ContactContainer, DeleteBtn } from './ContactCard.styled';
 
 export const ContactCard = ({ contact: { id, name, number } }) => {
