@@ -11,7 +11,8 @@ const getVisibleContacts = (contacts, filter) =>
   );
 
 export const ContactList = () => {
-  const contacts = useSelector(getContacts);
+  const data = useSelector(getContacts);
+  const contacts = data.contacts;
   const filter = useSelector(getFilter);
   const visibleContacts = getVisibleContacts(contacts, filter).sort(
     (prevContact, nextContact) =>
@@ -20,9 +21,9 @@ export const ContactList = () => {
 
   return (
     <>
-      {contacts.length ? (
+      {contacts?.length ? (
         <List>
-          {visibleContacts.length === 0 && (
+          {visibleContacts?.length === 0 && (
             <ContactListMessage>No matches found</ContactListMessage>
           )}
           {visibleContacts.map(contact => (
