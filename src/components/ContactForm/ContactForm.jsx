@@ -28,7 +28,7 @@ const initialValues = {
 };
 
 export const ContactForm = () => {
-  const { contacts } = useSelector(getContacts);
+  const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
 
   const checkNewContact = newContact => {
