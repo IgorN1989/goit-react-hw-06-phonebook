@@ -11,13 +11,9 @@ const getVisibleContacts = (contacts, filter) =>
   );
 
 export const ContactList = () => {
-  const data = useSelector(getContacts);
-  const contacts = data.contacts;
+  const { contacts } = useSelector(getContacts);
   const filter = useSelector(getFilter);
-  const visibleContacts = getVisibleContacts(contacts, filter).sort(
-    (prevContact, nextContact) =>
-      prevContact.name.localeCompare(nextContact.name)
-  );
+  const visibleContacts = getVisibleContacts(contacts, filter);
 
   return (
     <>
