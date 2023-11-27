@@ -23,7 +23,7 @@ export const ContactList = () => {
       {contacts.length ? (
         <List>
           {visibleContacts.length === 0 && (
-            <ContactListMessage>No matches</ContactListMessage>
+            <ContactListMessage>No matches found</ContactListMessage>
           )}
           {visibleContacts.map(contact => (
             <li key={contact.id}>
